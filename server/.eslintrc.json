@@ -20,6 +20,8 @@
   ],
   "rules": {
     "prettier/prettier": "error",
+    "no-console": "off",
+    "import/no-extraneous-dependencies": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
