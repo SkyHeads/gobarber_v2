@@ -11,6 +11,7 @@ const App: React.FC = () => {
   return (
     <>
       <AuthProvider>
+        {/* <SignUp /> */}
         <SignIn />
       </AuthProvider>
       <GlobalStyles />
