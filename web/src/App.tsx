@@ -3,8 +3,8 @@ import React from 'react';
 import GlobalStyles from './styles/global';
 
 import { AuthProvider } from './hooks/AuthContext';
+import { ToastProvider } from './hooks/ToastContext';
 
-import ToastContainer from './components/ToastContainer';
 import SignIn from './pages/SignIn';
 // import SignUp from './pages/SignUp';
 
@@ -12,11 +12,12 @@ const App: React.FC = () => {
   return (
     <>
       <AuthProvider>
-        {/* <SignUp /> */}
-        <SignIn />
+        <ToastProvider>
+          {/* <SignUp /> */}
+          <SignIn />
+        </ToastProvider>
       </AuthProvider>
 
-      <ToastContainer />
       <GlobalStyles />
     </>
   );
