@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-
-// import { Container } from './styles';
+import { View, StatusBar } from 'react-native';
 
 const App: React.FC = () => {
   return (
-    <View>
-      <Text>Olá Mundo</Text>
-    </View>
+    <>
+      <StatusBar barStyle="light-content" />
+      <View style={{ backgroundColor: '#312e38', flex: 1 }} />
+    </>
   );
 };
 
