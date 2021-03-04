@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, KeyboardAvoidingView, Platform, View } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
 import Icon from 'react-native-vector-icons/Feather';
 import logoImg from '../../assets/img/logo.png';
 
@@ -10,6 +12,8 @@ import Input from '../../components/Input';
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
 
 const SignUp: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -39,12 +43,7 @@ const SignUp: React.FC = () => {
         </Container>
       </KeyboardAvoidingView>
 
-      <BackToSignIn
-        activeOpacity={0.8}
-        onPress={() => {
-          console.log('BackToSignIn');
-        }}
-      >
+      <BackToSignIn activeOpacity={0.8} onPress={() => navigation.goBack()}>
         <Icon name="arrow-left" size={20} color="#fff" />
         <BackToSignInText>Voltar para Logon</BackToSignInText>
       </BackToSignIn>
