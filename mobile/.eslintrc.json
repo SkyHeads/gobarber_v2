@@ -28,6 +28,7 @@
   "rules": {
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
+    "no-shadow": "off",
     "no-console": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
@@ -45,6 +46,7 @@
     "@typescript-eslint/no-use-before-define": [
       "error"
     ],
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "react/react-in-jsx-scope": "off",
     "import/extensions": [
