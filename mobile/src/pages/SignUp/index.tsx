@@ -22,6 +22,7 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 
 import { Container, Title, BackToSignIn, BackToSignInText } from './styles';
+import api from '../../services/api';
 
 interface SignUpFormData {
   name: string;
@@ -52,14 +53,14 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-      // api.post('/users', data);
+      api.post('/users', data);
 
       Alert.alert(
         'Cadastro realizado com sucesso',
         'Você já pode fazer logon no GoBarber!',
       );
 
-      // history.push('/');
+      navigation.goBack();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
