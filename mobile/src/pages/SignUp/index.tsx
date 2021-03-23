@@ -32,47 +32,50 @@ interface SignUpFormData {
 
 const SignUp: React.FC = () => {
   const navigation = useNavigation();
-  const formRef = useRef<FormHandles>(null);
 
+  const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
-  const handleSignUp = useCallback(async (data: SignUpFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSignUp = useCallback(
+    async (data: SignUpFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório'),
-        email: Yup.string()
-          .email('Digite um e-mail válido')
-          .required('Email obrigatório'),
-        password: Yup.string().min(6, 'No mínimo 6 dígitos'),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
+          email: Yup.string()
+            .email('Digite um e-mail válido')
+            .required('Email obrigatório'),
+          password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      api.post('/users', data);
+        api.post('/users', data);
 
-      Alert.alert(
-        'Cadastro realizado com sucesso',
-        'Você já pode fazer logon no GoBarber!',
-      );
+        Alert.alert(
+          'Cadastro realizado com sucesso',
+          'Você já pode fazer logon no GoBarber!',
+        );
 
-      navigation.goBack();
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
-        formRef.current?.setErrors(errors);
+        navigation.goBack();
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+          formRef.current?.setErrors(errors);
+        }
+
+        Alert.alert(
+          'Erro no cadastro',
+          'Ocorreu um erro ao tentar se cadastrar, tente novamente.',
+        );
       }
-
-      Alert.alert(
-        'Erro no cadastro',
-        'Ocorreu um erro ao tentar se cadastrar, tente novamente.',
-      );
-    }
-  }, []);
+    },
+    [navigation],
+  );
 
   return (
     <>
