@@ -16,10 +16,23 @@ describe('CreateAppointment', () => {
     expect(appointment).toHaveProperty('id');
     expect(appointment.provider_id).toBe('121212');
   });
-});
 
-// describe('CreateAppointment', () => {
-//   it('should not be able to create two appointments on the same time', () => {
-//     expect(1 + 2).toBe(3);
-//   });
-// });
+  // it('should not be able to create two appointments in same time', async () => {
+  //   const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+  //   const createAppointment = new CreateAppointmentService(
+  //     fakeAppointmentsRepository,
+  //   );
+
+  //   const appointment1 = await createAppointment.execute({
+  //     date: new Date(),
+  //     provider_id: '121212',
+  //   });
+
+  //   const appointment2 = await createAppointment.execute({
+  //     date: new Date(),
+  //     provider_id: '121212',
+  //   });
+
+  //   expect(appointment1.date).toEqual(appointment2.date);
+  // });
+});
